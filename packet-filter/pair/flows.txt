@@ -1,0 +1,2 @@
+in_port=xdp:a1,action=output:xdp:b1
+in_port=xdp:b1,action=output:xdp:a1
