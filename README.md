@@ -29,3 +29,4 @@ Run `make clean` to remove generated files.
 
 * [packet filter](https://github.com/vproxy-tools/plugin-samples/tree/master/packet-filter)
     * [pair](https://github.com/vproxy-tools/plugin-samples/tree/master/packet-filter/pair): redirect packets from a to b, and b to a
+    * [ratelimit](https://github.com/vproxy-tools/plugin-samples/tree/master/packet-filter/ratelimit): limit packets rate before handled by the switch
