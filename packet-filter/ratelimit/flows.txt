@@ -1,0 +1,2 @@
+in_port=xdp:a1,action=limit_bps:1073741824,limit_pps:100000,normal
+in_port=xdp:b1,action=limit_bps:1073741824,limit_pps:100000,normal
