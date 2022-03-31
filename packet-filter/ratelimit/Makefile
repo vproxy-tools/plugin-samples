@@ -5,7 +5,7 @@ include ../../include/*.mk
 .PHONY: gen
 gen:
 	cd ../../ && make
-	java -jar ../../vproxy.jar -Deploy=PacketFilterGenerator class=vproxy.samples.packetfilter.ratelimit.Ratelimit in=./flows.txt out=./src/vproxy/samples/packetfilter/ratelimit/Ratelimit.java
+	java -jar ../../vproxy.jar -Deploy=PacketFilterGenerator class=io.vproxy.samples.packetfilter.ratelimit.Ratelimit in=./flows.txt out=./src/io/vproxy/samples/packetfilter/ratelimit/Ratelimit.java
 
 .PHONY: compile
 compile: gen
@@ -14,12 +14,12 @@ compile: gen
 .PHONY: clean
 clean:
 	rm -rf ./classes
-	rm -f ./src/vproxy/samples/packetfilter/ratelimit/Ratelimit.java
+	rm -f ./src/io/vproxy/samples/packetfilter/ratelimit/Ratelimit.java
 
 .PHONY: install
 install: compile
 	$(run-redis-cli) \
-	"System: add plugin ratelimit url `pwd`/classes/ class vproxy.samples.packetfilter.ratelimit.Ratelimit"
+	"System: add plugin ratelimit url `pwd`/classes/ class io.vproxy.samples.packetfilter.ratelimit.Ratelimit"
 	$(run-redis-cli) \
 	"System: update plugin ratelimit enable"
 

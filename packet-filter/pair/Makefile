@@ -5,7 +5,7 @@ include ../../include/*.mk
 .PHONY: gen
 gen:
 	cd ../../ && make
-	java -jar ../../vproxy.jar -Deploy=PacketFilterGenerator class=vproxy.samples.packetfilter.pair.Pair in=./flows.txt out=./src/vproxy/samples/packetfilter/pair/Pair.java
+	java -jar ../../vproxy.jar -Deploy=PacketFilterGenerator class=io.vproxy.samples.packetfilter.pair.Pair in=./flows.txt out=./src/io/vproxy/samples/packetfilter/pair/Pair.java
 
 .PHONY: compile
 compile: gen
@@ -14,12 +14,12 @@ compile: gen
 .PHONY: clean
 clean:
 	rm -rf ./classes
-	rm -f ./src/vproxy/samples/packetfilter/pair/Pair.java
+	rm -f ./src/io/vproxy/samples/packetfilter/pair/Pair.java
 
 .PHONY: install
 install: compile
 	$(run-redis-cli) \
-	"System: add plugin pair url `pwd`/classes/ class vproxy.samples.packetfilter.pair.Pair"
+	"System: add plugin pair url `pwd`/classes/ class io.vproxy.samples.packetfilter.pair.Pair"
 	$(run-redis-cli) \
 	"System: update plugin pair enable"
 
