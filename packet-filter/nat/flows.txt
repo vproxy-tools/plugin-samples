@@ -1,0 +1,15 @@
+in_port=xdp:a1,tcp,tp_dst=2000-2999,actions=snat:2.2.2.2:1-65535,l4tx
+in_port=xdp:a1,udp,tp_dst=2000-2999,actions=snat:2.2.2.2:1-65535,l4tx
+
+in_port=xdp:a1,nw_dst=10.100.0.2,action=normal
+
+in_port=xdp:a1,tcp,tp_dst=1000-1999,actions=dnat:10.100.0.2:80,l4tx
+in_port=xdp:a1,udp,tp_dst=1000-1999,actions=dnat:10.100.0.2:80,l4tx
+
+in_port=xdp:a1,tcp,tp_dst=3000-3999,actions=fnat:3.3.3.3:1-65535^10.100.0.2:90,l4tx
+in_port=xdp:a1,udp,tp_dst=3000-3999,actions=fnat:3.3.3.3:1-65535^10.100.0.2:90,l4tx
+
+in_port=xdp:b1,tcp,ct_state=+trk,actions=nat,l4tx
+in_port=xdp:b1,udp,ct_state=+trk,actions=nat,l4tx
+
+action=normal
